@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./product-service
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./uploads:/app/uploads
+    environment:
+      - APP_UPLOAD_DIR=/app/uploads
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  uploads:

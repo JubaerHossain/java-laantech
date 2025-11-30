@@ -1,0 +1,22 @@
+export interface ApiResponse<T> {
+  success: boolean
+  message: string
+  data: T
+  timestamp: string
+}
+
+export interface PagedResponse<T> {
+  content: T[]
+  page: number
+  size: number
+  totalElements: number
+  totalPages: number
+  first: boolean
+  last: boolean
+}
+
+export interface UploadProgress {
+  loaded: number
+  total: number
+  percentage: number
+}
